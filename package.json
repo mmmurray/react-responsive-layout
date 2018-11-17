@@ -1,0 +1,7 @@
+{
+  "name": "react-responsive-layout",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:mmmurray/react-responsive-layout.git",
+  "author": "Mark Murray <mark@murray.xyz>"
+}
