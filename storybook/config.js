@@ -1,3 +1,4 @@
+import { withKnobs } from '@storybook/addon-knobs'
 import { withOptions } from '@storybook/addon-options'
 import { themes } from '@storybook/components'
 import { addDecorator, configure } from '@storybook/react'
@@ -30,5 +31,7 @@ addDecorator(
 )
 
 addDecorator(story => <CSSProvider value={{ css }}>{story()}</CSSProvider>)
+
+addDecorator(withKnobs)
 
 configure(loadStories, module)
