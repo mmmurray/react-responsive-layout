@@ -34,14 +34,14 @@ import {
   CSSProvider,
   CSSContext,
   MQContext,
-} from 'react-responsive-component'
+} from 'react-responsive-layout'
 
-const createStyles = mediaQueryMaxWidth => css`
+const createStyles = maxWidth => css`
   background-color: red;
   height: 100px;
   padding: 10px;
 
-  @media (max-width: ${mediaQueryMaxWidth}px) {
+  @media (max-width: ${maxWidth}px) {
     background-color: lime;
   }
 `
@@ -49,9 +49,9 @@ const createStyles = mediaQueryMaxWidth => css`
 const MyResponsiveComponent = () => {
   const { mq } = useContext(MQContext)
   const breakpoint = mq(200)
-  const mediaQueryMaxWidth = isFinite(breakpoint) ? breakpoint - 1 : 1000000
+  const maxWidth = isFinite(breakpoint) ? breakpoint - 1 : 1000000
 
-  return <div className={createStyles(mediaQueryMaxWidth)}>Hello</div>
+  return <div className={createStyles(maxWidth)}>Hello</div>
 }
 
 const App = () => (
@@ -84,14 +84,18 @@ This will render 3 columns with the middle column being twice as wide as the oth
 ### Columns
 
 Props
-| Name | Type | Default | Description |
-| --- | --- | --- | -- |
-| `ratios` | `number[]` | Required | The proportions to render each column. Equates to [`grid-template-columns`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns)
-| `gap` | `number` | `0` | The fixed spacing between each column (in pixels). Equates to [`grid-column-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap) |
+
+| Name     | Type       | Default  | Description                                                                                                                                          |
+| -------- | ---------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ratios` | `number[]` | Required | The proportions to render each column. Equates to [`grid-template-columns`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns). |
+| `gap`    | `number`   | `0`      | The fixed spacing between each column (in pixels). Equates to [`grid-column-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap)       |
 
 ### Belt
 
+Constrain the child component to certain widths at different breakpoints.
+
 Props
-| Name | Type | Default | Description |
-| --- | --- | --- | -- |
-| `notches` | `Array<{ width: number, fluio: boolean}>` | Required | The widths at which the content should be constrained to.
+
+| Name      | Type                                      | Default  | Description                                               |
+| --------- | ----------------------------------------- | -------- | --------------------------------------------------------- |
+| `notches` | `Array<{ width: number, fluio: boolean}>` | Required | The widths at which the content should be constrained to. |
