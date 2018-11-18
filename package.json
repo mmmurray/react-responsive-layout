@@ -15,6 +15,9 @@
     "test:coverage": "jest --coverage",
     "test": "run-p test:*"
   },
+  "peerDependencies": {
+    "react": ">16"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@storybook/addon-knobs": "^4.0.7",
