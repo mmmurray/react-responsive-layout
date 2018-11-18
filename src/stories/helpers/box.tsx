@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { SFC, useContext } from 'react'
-import CSSContext from '../css-context'
-import MQContext from '../mq-context'
-import useCurrentWidth from './helpers/use-current-width'
+import CSSContext from '../../css-context'
+import MQContext from '../../mq-context'
+import useCurrentWidth from './use-current-width'
 
 type BoxProps = {
   maxWidth: number
