@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { SFC, useContext } from 'react'
-import CSSContext from '../../css-context'
-import MQContext from '../../mq-context'
+import { CSSContext, MQContext } from '../../src'
 import useCurrentWidth from './use-current-width'
 
 type BoxProps = {

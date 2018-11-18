@@ -11,7 +11,7 @@ function requireAll(requireContext) {
 }
 
 function loadStories() {
-  requireAll(require.context('../src', true, /\.stories\.tsx$/))
+  requireAll(require.context('../stories', true, /\.stories\.tsx$/))
 }
 
 injectGlobal({
