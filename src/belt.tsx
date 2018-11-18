@@ -2,6 +2,7 @@ import * as React from 'react'
 import { CSSConsumer } from './css-context'
 import { MQProvider } from './mq-context'
 import Notch from './types/notch'
+import notchesMQ from './helpers/notches'
 
 type BeltProps = {
   notches: Notch[]
@@ -16,15 +17,13 @@ const createNotchStyles = (maxWidth: number = 0, fluid: boolean = false) => ({
 
 const createNotchSelector = (from: number, to: number) =>
   isFinite(to)
-    ? `@media (min-width: ${from}px) and (max-width: ${to}px)`
+    ? `@media (min-width: ${from}px) and (max-width: ${to - 1}px)`
     : `@media (min-width: ${from}px)`
 
 const createStyles = (notches: Notch[]) => {
   return notches.reduce((acc, notch, index) => {
     const previousWidth = index === 0 ? 0 : notches[index - 1].width
-
     const selector = createNotchSelector(previousWidth, notch.width)
-
     const notchStyles = createNotchStyles(previousWidth, notch.fluid)
 
     return { ...acc, [selector]: notchStyles }
@@ -32,11 +31,7 @@ const createStyles = (notches: Notch[]) => {
 }
 
 const Belt: React.SFC<BeltProps> = ({ notches, children }) => {
-  const maxWidth = 600
-  const padding = 10
-
-  const mq = (width: number) =>
-    width >= maxWidth - padding * 2 ? 1000000 : width + padding * 2
+  const mq = (width: number) => notchesMQ(notches, width)
 
   return (
     <CSSConsumer>
