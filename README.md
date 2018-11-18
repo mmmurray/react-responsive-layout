@@ -24,17 +24,13 @@ In order to generate accurate media queries, all horizontal spacing must be appl
 
 The components rely on a CSS-in-JS library of your choosing. You must provide a function which generates a class name based on an object of styles.
 
-Example using emotion:
+Example using emotion ([CodeSandbox link](https://codesandbox.io/s/rl0vjonq1n)):
 
 ```jsx
+import ReactDOM from 'react-dom'
 import React, { useContext } from 'react'
 import { css } from 'emotion'
-import {
-  Columns,
-  CSSProvider,
-  CSSContext,
-  MQContext,
-} from 'react-responsive-layout'
+import { Belt, Columns, CSSProvider, MQContext } from 'react-responsive-layout'
 
 const createStyles = maxWidth => css`
   background-color: red;
@@ -54,15 +50,26 @@ const MyResponsiveComponent = () => {
   return <div className={createStyles(maxWidth)}>Hello</div>
 }
 
+const notches = [
+  { width: 850, fluid: true },
+  { width: 1000, fluid: false },
+  { fluid: false },
+]
+
 const App = () => (
   <CSSProvider value={{ css }}>
-    <Columns ratios={[1, 2, 1]} gap={10}>
-      <MyResponsiveComponent />
-      <MyResponsiveComponent />
-      <MyResponsiveComponent />
-    </Columns>
+    <Belt notches={notches}>
+      <Columns ratios={[1, 2, 1]} gap={10}>
+        <MyResponsiveComponent />
+        <MyResponsiveComponent />
+        <MyResponsiveComponent />
+      </Columns>
+    </Belt>
   </CSSProvider>
 )
+
+const rootElement = document.getElementById('root')
+ReactDOM.render(<App />, rootElement)
 ```
 
 This will render 3 columns with the middle column being twice as wide as the other two. At different window widths, the following will be rendered:
