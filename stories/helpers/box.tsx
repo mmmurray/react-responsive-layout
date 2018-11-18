@@ -14,7 +14,7 @@ const createStyles = (maxWidth: number) => ({
   height: '100px',
   padding: '10px',
   width: '100%',
-  [`@media (max-width: ${maxWidth}px)`]: {
+  [`@media (max-width: ${isFinite(maxWidth) ? maxWidth - 1 : 1000000}px)`]: {
     backgroundColor: '#1bc567',
   },
 })
