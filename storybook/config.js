@@ -6,12 +6,10 @@ import React from 'react'
 import { css } from 'react-emotion'
 import { CSSProvider } from '../src/css-context'
 
-function requireAll(requireContext) {
-  return requireContext.keys().map(requireContext)
-}
+const loadStories = () => {
+  const requireContext = require.context('../stories', true, /\.stories\.tsx$/)
 
-function loadStories() {
-  requireAll(require.context('../stories', true, /\.stories\.tsx$/))
+  requireContext.keys().map(requireContext)
 }
 
 injectGlobal({
