@@ -1,6 +1,7 @@
 import { withOptions } from '@storybook/addon-options'
 import { themes } from '@storybook/components'
 import { addDecorator, configure } from '@storybook/react'
+import { injectGlobal } from 'emotion'
 
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext)
@@ -9,6 +10,15 @@ function requireAll(requireContext) {
 function loadStories() {
   requireAll(require.context('../src', true, /\.stories\.tsx$/))
 }
+
+injectGlobal({
+  '*': {
+    margin: '0',
+    padding: '0',
+    boxSizing: 'border-box',
+    fontFamily: 'monospace',
+  },
+})
 
 addDecorator(
   withOptions({
