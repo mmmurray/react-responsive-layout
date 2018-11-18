@@ -1,41 +1,34 @@
 import * as React from 'react'
-import styled from 'react-emotion'
+import { SFC, useContext } from 'react'
+import CSSContext from '../css-context'
+import MQContext from '../mq-context'
+import useCurrentWidth from './helpers/use-current-width'
 
 type BoxProps = {
   maxWidth: number
 }
 
-const StyledBox = styled('div')<BoxProps>(
-  {
-    backgroundColor: '#c51b62',
-    color: 'white',
-    height: '100px',
-    padding: '10px',
-    width: '100%',
+const createStyles = (maxWidth: number) => ({
+  backgroundColor: '#c51b62',
+  boxShadow: '0 0 0 1px white inset',
+  color: 'white',
+  height: '100px',
+  padding: '10px',
+  width: '100%',
+  [`@media (max-width: ${maxWidth}px)`]: {
+    backgroundColor: '#1bc567',
   },
-  props => ({
-    [`@media (max-width: ${props.maxWidth}px)`]: {
-      backgroundColor: '#1bc567',
-    },
-  }),
-)
+})
 
-const Box: React.SFC<BoxProps> = ({ maxWidth }) => {
-  const ref = React.useRef({ clientWidth: 0 })
-  const [width, setWidth] = React.useState(0)
-
-  React.useEffect(() => {
-    const resizeHandler = () => setWidth(ref.current.clientWidth)
-    window.addEventListener('resize', resizeHandler)
-    resizeHandler()
-
-    return () => window.removeEventListener('resize', resizeHandler)
-  })
+const Box: SFC<BoxProps> = ({ maxWidth }) => {
+  const { css } = useContext(CSSContext)
+  const { mq } = useContext(MQContext)
+  const { ref, width } = useCurrentWidth<HTMLDivElement>()
 
   return (
-    <StyledBox innerRef={ref} maxWidth={maxWidth}>
+    <div ref={ref} className={css(createStyles(mq(maxWidth)))}>
       {width}/{maxWidth}
-    </StyledBox>
+    </div>
   )
 }
 
