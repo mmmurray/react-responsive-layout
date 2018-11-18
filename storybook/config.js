@@ -2,6 +2,9 @@ import { withOptions } from '@storybook/addon-options'
 import { themes } from '@storybook/components'
 import { addDecorator, configure } from '@storybook/react'
 import { injectGlobal } from 'emotion'
+import React from 'react'
+import { css } from 'react-emotion'
+import { CSSProvider } from '../src/css-context'
 
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext)
@@ -27,5 +30,7 @@ addDecorator(
     theme: themes.dark,
   }),
 )
+
+addDecorator(story => <CSSProvider value={{ css }}>{story()}</CSSProvider>)
 
 configure(loadStories, module)
