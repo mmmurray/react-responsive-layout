@@ -1,7 +1,7 @@
 import { number } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
-import { Belt } from '../src'
+import { Belt, Columns } from '../src'
 import Box from './helpers/box'
 
 storiesOf('Belt', module)
@@ -102,6 +102,41 @@ storiesOf('Belt', module)
     return (
       <Belt notches={notches}>
         <Box maxWidth={maxWidth} />
+      </Belt>
+    )
+  })
+  .add('with columns', () => {
+    const maxWidth = number('maxWidth', 250)
+
+    const notches = [
+      {
+        width: 400,
+        fluid: true,
+      },
+      {
+        width: 500,
+        fluid: false,
+      },
+      {
+        width: 600,
+        fluid: false,
+      },
+      {
+        width: 700,
+        fluid: false,
+      },
+      {
+        width: Infinity,
+        fluid: false,
+      },
+    ]
+
+    return (
+      <Belt notches={notches}>
+        <Columns ratios={[2, 3]} gap={10}>
+          <Box maxWidth={maxWidth} />
+          <Box maxWidth={maxWidth} />
+        </Columns>
       </Belt>
     )
   })
