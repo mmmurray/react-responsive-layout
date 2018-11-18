@@ -7,15 +7,10 @@ type BeltProps = {
   notches: Notch[]
 }
 
-const createNotchStyles = (
-  maxWidth: number = 0,
-  padding: number = 0,
-  fluid: boolean = false,
-) => ({
+const createNotchStyles = (maxWidth: number = 0, fluid: boolean = false) => ({
   boxSizing: 'border-box',
   margin: '0 auto',
   maxWidth: maxWidth && !fluid ? `${maxWidth}px` : 'auto',
-  padding: `0 ${padding || 0}px`,
   width: '100%',
 })
 
@@ -30,11 +25,7 @@ const createStyles = (notches: Notch[]) => {
 
     const selector = createNotchSelector(previousWidth, notch.width)
 
-    const notchStyles = createNotchStyles(
-      previousWidth,
-      notch.padding,
-      notch.fluid,
-    )
+    const notchStyles = createNotchStyles(previousWidth, notch.fluid)
 
     return { ...acc, [selector]: notchStyles }
   }, {})
