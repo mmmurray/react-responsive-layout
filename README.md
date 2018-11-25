@@ -1,5 +1,8 @@
 # React Responsive Layout
 
+[![Travis](https://img.shields.io/travis/mmmurray/react-responsive-layout.svg)](https://travis-ci.org/mmmurray/react-responsive-layout)
+[![npm](https://img.shields.io/npm/v/react-responsive-layout.svg)](https://www.npmjs.com/package/react-responsive-layout)
+
 A library of layout components designed to enable [container queries](https://css-tricks.com/container-query-discussion/) without JavaScript.
 
 ### ⚠️ Note: This library is still in alpha, expect breaking changes.
