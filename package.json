@@ -1,19 +1,18 @@
 {
   "name": "react-responsive-layout",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Mark Murray <mark@murray.xyz>",
   "license": "MIT",
   "repository": "git@github.com:mmmurray/react-responsive-layout.git",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.json --rootDir src --outDir lib",
-    "jest": "jest --watch",
-    "prettier": "prettier --write '{src/**/*,test/**/*}.{ts,json}'",
+    "build": "rm -rf lib && mmm build",
+    "jest": "mmm jest",
+    "prepare": "yarn build",
+    "prettier": "mmm format",
     "storybook": "start-storybook -p 9001 -c storybook",
-    "test:compile": "tsc -p . --noEmit",
-    "test:coverage": "jest --coverage",
-    "test": "run-p test:*"
+    "test": "mmm coverage"
   },
   "peerDependencies": {
     "react": ">16"
@@ -31,13 +30,11 @@
     "@types/storybook__react": "^4.0.0",
     "babel-loader": "^8.0.4",
     "emotion": "^9.2.12",
-    "jest": "^23.6.0",
-    "npm-run-all": "^4.1.3",
+    "mmm-scripts": "^0.0.8",
     "prettier": "^1.15.2",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
     "react-emotion": "^9.2.12",
-    "ts-jest": "^23.10.4",
     "ts-loader": "^5.3.0",
     "typescript": "^3.1.6"
   }
