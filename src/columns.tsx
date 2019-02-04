@@ -13,27 +13,33 @@ type ColumnsProps = {
   columns?: Column[]
 }
 
-const createStyles = (gap: number, ratios: number[]) => ({
+const createStyles = (gap: number, columns: Column[]) => ({
   display: 'grid',
   gridColumnGap: `${gap}px`,
-  gridTemplateColumns: ratios.map(ratio => `minmax(0, ${ratio}fr)`).join(' '),
+  gridTemplateColumns: columns
+    .map(({ value }) => `minmax(0, ${value}fr)`)
+    .join(' '),
   width: '100%',
 })
 
 const Columns: React.SFC<ColumnsProps> = ({
   gap = 0,
   ratios = [],
+  columns = ratios.map<Column>(value => ({ type: 'ratio', value })),
   children,
 }) => {
-  const totalRatio = ratios.reduce((acc, ratio) => acc + ratio)
-  const totalGap = gap * (ratios.length - 1)
+  const totalRatio = columns.reduce(
+    (acc, { type, value }) => (type === 'ratio' ? acc + value : acc),
+    0,
+  )
+  const totalGap = gap * (columns.length - 1)
 
   return (
     <CSSConsumer>
       {({ css }) => {
         const wrappedChildren = React.Children.map(children, (child, index) => {
-          const ratio = ratios[index]
-          const mq = (width: number) => width * (totalRatio / ratio) + totalGap
+          const { value } = columns[index]
+          const mq = (width: number) => width * (totalRatio / value) + totalGap
 
           return (
             <MQProvider key={index} mq={mq}>
@@ -43,7 +49,7 @@ const Columns: React.SFC<ColumnsProps> = ({
         })
 
         return (
-          <div className={css(createStyles(gap, ratios))}>
+          <div className={css(createStyles(gap, columns))}>
             {wrappedChildren}
           </div>
         )
