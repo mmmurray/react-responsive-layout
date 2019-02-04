@@ -9,7 +9,7 @@ type Column = {
 
 type ColumnsProps = {
   gap?: number
-  ratios: number[]
+  ratios?: number[]
   columns?: Column[]
 }
 
@@ -20,7 +20,11 @@ const createStyles = (gap: number, ratios: number[]) => ({
   width: '100%',
 })
 
-const Columns: React.SFC<ColumnsProps> = ({ gap = 0, ratios, children }) => {
+const Columns: React.SFC<ColumnsProps> = ({
+  gap = 0,
+  ratios = [],
+  children,
+}) => {
   const total = ratios.reduce((acc, ratio) => acc + ratio)
   const totalGap = gap * (ratios.length - 1)
 
