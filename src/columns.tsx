@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { CSSConsumer } from './css-context'
 import { MQProvider } from './mq-context'
+import cx from './helpers/cx'
 
 type Column = {
   type: 'ratio' | 'fixed'
@@ -71,7 +72,10 @@ const Columns: React.SFC<ColumnsProps> = ({
         })
 
         return (
-          <div {...props} className={css(createStyles(gap, columns))}>
+          <div
+            {...props}
+            className={cx(css(createStyles(gap, columns)), props.className)}
+          >
             {wrappedChildren}
           </div>
         )
