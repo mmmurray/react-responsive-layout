@@ -39,6 +39,19 @@ storiesOf('Columns', module)
       <Box maxWidth={200} />
     </Columns>
   ))
+  .add('three unequal columns wrapped', () => (
+    <Columns ratios={[1, 2, 3]}>
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+    </Columns>
+  ))
   .add('three unequal columns with gap', () => (
     <Columns ratios={[1, 2, 3]} gap={10}>
       <Box maxWidth={200} />

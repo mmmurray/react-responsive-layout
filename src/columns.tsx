@@ -52,7 +52,7 @@ const Columns: React.SFC<ColumnsProps> = ({
     <CSSConsumer>
       {({ css }) => {
         const wrappedChildren = React.Children.map(children, (child, index) => {
-          const { type, value } = columns[index]
+          const { type, value } = columns[index % columns.length]
           const mq = (width: number) => {
             if (type === 'ratio') {
               return width * (totalRatio / value) + totalGap + totalFixed
