@@ -10,5 +10,7 @@ const CSSContext = React.createContext<CSSContext>({ css: () => '' })
 const CSSConsumer = CSSContext.Consumer
 const CSSProvider = CSSContext.Provider
 
+const useCSS = () => React.useContext(CSSContext).css
+
 export default CSSContext
-export { CSSConsumer, CSSProvider }
+export { CSSConsumer, CSSProvider, useCSS }
