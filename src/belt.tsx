@@ -3,6 +3,7 @@ import { CSSConsumer } from './css-context'
 import { MQProvider } from './mq-context'
 import Notch from './types/notch'
 import notchesMQ from './helpers/notches'
+import cx from './helpers/cx'
 
 type BeltProps = {
   notches: Notch[]
@@ -39,7 +40,10 @@ const Belt: React.SFC<BeltProps> = ({ notches, props = {}, children }) => {
       {({ css }) => {
         return (
           <MQProvider mq={mq}>
-            <div {...props} className={css(createStyles(notches))}>
+            <div
+              {...props}
+              className={cx(css(createStyles(notches)), props.className)}
+            >
               {children}
             </div>
           </MQProvider>
