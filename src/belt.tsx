@@ -37,18 +37,16 @@ const Belt: React.SFC<BeltProps> = ({ notches, props = {}, children }) => {
 
   return (
     <CSSConsumer>
-      {({ css }) => {
-        return (
-          <MQProvider mq={mq}>
-            <div
-              {...props}
-              className={cx(css(createStyles(notches)), props.className)}
-            >
-              {children}
-            </div>
-          </MQProvider>
-        )
-      }}
+      {({ css }) => (
+        <MQProvider mq={mq}>
+          <div
+            {...props}
+            className={cx(css(createStyles(notches)), props.className)}
+          >
+            {children}
+          </div>
+        </MQProvider>
+      )}
     </CSSConsumer>
   )
 }
