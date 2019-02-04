@@ -59,6 +59,19 @@ storiesOf('Columns', module)
       <Box maxWidth={200} />
     </Columns>
   ))
+  .add('three unequal columns with gap wrapped', () => (
+    <Columns ratios={[1, 2, 3]} columnGap={20} rowGap={10}>
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+    </Columns>
+  ))
   .add('nested columns', () => (
     <Columns ratios={[2, 1]} gap={10}>
       <Columns ratios={[1, 1]} gap={5}>
