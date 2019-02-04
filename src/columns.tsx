@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { CSSConsumer } from './css-context'
-import { MQProvider } from './mq-context'
 import cx from './helpers/cx'
+import { MQProvider } from './mq-context'
 
 type Column = {
   type: 'ratio' | 'fixed'
