@@ -6,6 +6,7 @@ import notchesMQ from './helpers/notches'
 
 type BeltProps = {
   notches: Notch[]
+  props?: React.HTMLProps<HTMLDivElement>
 }
 
 const createNotchStyles = (maxWidth: number = 0, fluid: boolean = false) => ({
@@ -30,7 +31,7 @@ const createStyles = (notches: Notch[]) => {
   }, {})
 }
 
-const Belt: React.SFC<BeltProps> = ({ notches, children }) => {
+const Belt: React.SFC<BeltProps> = ({ notches, props, children }) => {
   const mq = (width: number) => notchesMQ(notches, width)
 
   return (
@@ -38,7 +39,9 @@ const Belt: React.SFC<BeltProps> = ({ notches, children }) => {
       {({ css }) => {
         return (
           <MQProvider mq={mq}>
-            <div className={css(createStyles(notches))}>{children}</div>
+            <div {...props} className={css(createStyles(notches))}>
+              {children}
+            </div>
           </MQProvider>
         )
       }}
