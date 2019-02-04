@@ -8,14 +8,14 @@ type BoxProps = {
 }
 
 const createStyles = (mq: string) => ({
-  backgroundColor: '#1bc567',
+  backgroundColor: '#c51b62',
   boxShadow: '0 0 0 1px white inset',
   color: 'white',
   height: '100px',
   padding: '10px',
   width: '100%',
   [mq]: {
-    backgroundColor: '#c51b62',
+    backgroundColor: '#1bc567',
   },
 })
 
