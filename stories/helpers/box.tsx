@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { SFC, useContext } from 'react'
-import { CSSContext, useMediaQuery } from '../../src'
+import { CSSContext, useMediaQuery, useCSS } from '../../src'
 import useCurrentWidth from './use-current-width'
 
 type BoxProps = {
@@ -20,7 +20,7 @@ const createStyles = (mq: string) => ({
 })
 
 const Box: SFC<BoxProps> = ({ maxWidth }) => {
-  const { css } = useContext(CSSContext)
+  const css = useCSS()
   const mq = useMediaQuery(maxWidth)
   const { ref, width } = useCurrentWidth<HTMLDivElement>()
 
