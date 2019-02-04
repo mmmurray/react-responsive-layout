@@ -27,30 +27,35 @@ In order to generate accurate media queries, all horizontal spacing must be appl
 
 The components rely on a CSS-in-JS library of your choosing. You must provide a function which generates a class name based on an object of styles.
 
-Example using emotion ([CodeSandbox link](https://codesandbox.io/s/rl0vjonq1n)):
+### Example using emotion
+
+[![Edit 7ylpq13poq](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/7ylpq13poq)
 
 ```jsx
 import ReactDOM from 'react-dom'
-import React, { useContext } from 'react'
+import React from 'react'
 import { css } from 'emotion'
-import { Belt, Columns, CSSProvider, MQContext } from 'react-responsive-layout'
+import {
+  Belt,
+  Columns,
+  CSSProvider,
+  useMediaQuery,
+} from 'react-responsive-layout'
 
-const createStyles = maxWidth => css`
+const createStyles = mq => css`
   background-color: red;
   height: 100px;
   padding: 10px;
 
-  @media (max-width: ${maxWidth}px) {
+  ${mq} {
     background-color: lime;
   }
 `
 
 const MyResponsiveComponent = () => {
-  const { mq } = useContext(MQContext)
-  const breakpoint = mq(200)
-  const maxWidth = isFinite(breakpoint) ? breakpoint - 1 : 1000000
+  const mq = useMediaQuery(200)
 
-  return <div className={createStyles(maxWidth)}>Hello</div>
+  return <div className={createStyles(mq)}>Hello</div>
 }
 
 const notches = [
@@ -62,7 +67,14 @@ const notches = [
 const App = () => (
   <CSSProvider value={{ css }}>
     <Belt notches={notches}>
-      <Columns ratios={[1, 2, 1]} gap={10}>
+      <Columns
+        columns={[
+          { type: 'ratio', value: 1 },
+          { type: 'ratio', value: 2 },
+          { type: 'ratio', value: 1 },
+        ]}
+        gap={10}
+      >
         <MyResponsiveComponent />
         <MyResponsiveComponent />
         <MyResponsiveComponent />
@@ -71,8 +83,7 @@ const App = () => (
   </CSSProvider>
 )
 
-const rootElement = document.getElementById('root')
-ReactDOM.render(<App />, rootElement)
+ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
 This will render 3 columns with the middle column being twice as wide as the other two. At different window widths, the following will be rendered:
@@ -95,10 +106,12 @@ This will render 3 columns with the middle column being twice as wide as the oth
 
 Props
 
-| Name     | Type       | Default  | Description                                                                                                                                          |
-| -------- | ---------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ratios` | `number[]` | Required | The proportions to render each column. Equates to [`grid-template-columns`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns). |
-| `gap`    | `number`   | `0`      | The fixed spacing between each column (in pixels). Equates to [`grid-column-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap)       |
+| Name        | Type                                              | Default  | Description                                                                                                                                            |
+| ----------- | ------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `columns`   | `Array<{type: 'ratio' | 'fixed', value: number }` | Required | The proportions to render each column. Equates to [`grid-template-columns`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns).   |
+| `gap`       | `number`                                          | `0`      | The fixed spacing between each column and row (in pixels). Equates to [`grid-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/gap)               |
+| `columnGap` | `number`                                          | `gap`    | The fixed spacing between each column and row (in pixels). Equates to [`grid-column-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap) |
+| `rowGap`    | `number`                                          | `gap`    | The fixed spacing between each row and row (in pixels). Equates to [`grid-row-gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap)          |
 
 ### Belt
 
@@ -108,4 +121,4 @@ Props
 
 | Name      | Type                                      | Default  | Description                                               |
 | --------- | ----------------------------------------- | -------- | --------------------------------------------------------- |
-| `notches` | `Array<{ width: number, fluio: boolean}>` | Required | The widths at which the content should be constrained to. |
+| `notches` | `Array<{ width: number, fluid: boolean}>` | Required | The widths at which the content should be constrained to. |
