@@ -11,6 +11,7 @@ type ColumnsProps = {
   gap?: number
   ratios?: number[]
   columns?: Column[]
+  props?: React.HTMLProps<HTMLDivElement>
 }
 
 const createSizeFromColumn = ({ type, value }: Column): string => {
@@ -36,6 +37,7 @@ const Columns: React.SFC<ColumnsProps> = ({
   gap = 0,
   ratios = [],
   columns = ratios.map<Column>(value => ({ type: 'ratio', value })),
+  props = {},
   children,
 }) => {
   const totalRatio = columns.reduce(
@@ -69,7 +71,7 @@ const Columns: React.SFC<ColumnsProps> = ({
         })
 
         return (
-          <div className={css(createStyles(gap, columns))}>
+          <div {...props} className={css(createStyles(gap, columns))}>
             {wrappedChildren}
           </div>
         )
