@@ -10,6 +10,8 @@ type Column = {
 
 type ColumnsProps = {
   gap?: number
+  rowGap?: number
+  columnGap?: number
   ratios?: number[]
   columns?: Column[]
   props?: React.HTMLProps<HTMLDivElement>
@@ -25,10 +27,15 @@ const createSizeFromColumn = ({ type, value }: Column): string => {
   return '0'
 }
 
-const createStyles = (gap: number, columns: Column[]) => ({
+const createStyles = (props: {
+  columns: Column[]
+  rowGap: number
+  columnGap: number
+}) => ({
   display: 'grid',
-  gridColumnGap: `${gap}px`,
-  gridTemplateColumns: columns
+  gridColumnGap: `${props.columnGap}px`,
+  gridRowGap: `${props.rowGap}px`,
+  gridTemplateColumns: props.columns
     .map(column => `minmax(0, ${createSizeFromColumn(column)})`)
     .join(' '),
   width: '100%',
@@ -36,6 +43,8 @@ const createStyles = (gap: number, columns: Column[]) => ({
 
 const Columns: React.SFC<ColumnsProps> = ({
   gap = 0,
+  rowGap = gap,
+  columnGap = gap,
   ratios = [],
   columns = ratios.map<Column>(value => ({ type: 'ratio', value })),
   props = {},
@@ -49,7 +58,7 @@ const Columns: React.SFC<ColumnsProps> = ({
     (acc, { type, value }) => (type === 'fixed' ? acc + value : acc),
     0,
   )
-  const totalGap = gap * (columns.length - 1)
+  const totalGap = columnGap * (columns.length - 1)
 
   return (
     <CSSConsumer>
@@ -74,7 +83,10 @@ const Columns: React.SFC<ColumnsProps> = ({
         return (
           <div
             {...props}
-            className={cx(css(createStyles(gap, columns)), props.className)}
+            className={cx(
+              css(createStyles({ columns, columnGap, rowGap })),
+              props.className,
+            )}
           >
             {wrappedChildren}
           </div>
