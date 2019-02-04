@@ -23,3 +23,9 @@ test('zero minimum', () => {
 
   expect(mq).toBe('@media screen and (max-width: 200px)')
 })
+
+test('infinity maximum', () => {
+  const mq = createMq([{ min: 100, max: Infinity }])
+
+  expect(mq).toBe('@media screen and (min-width: 100px)')
+})
