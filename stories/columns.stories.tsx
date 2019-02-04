@@ -70,16 +70,7 @@ storiesOf('Columns', module)
   ))
   .add('one fixed column', () => (
     <Columns
-      columns={[
-        {
-          type: 'fixed',
-          value: 200,
-        },
-        {
-          type: 'ratio',
-          value: 1,
-        },
-      ]}
+      columns={[{ type: 'fixed', value: 200 }, { type: 'ratio', value: 1 }]}
       gap={10}
     >
       <Box maxWidth={300} />
@@ -89,22 +80,10 @@ storiesOf('Columns', module)
   .add('two fixed columns', () => (
     <Columns
       columns={[
-        {
-          type: 'fixed',
-          value: 200,
-        },
-        {
-          type: 'ratio',
-          value: 2,
-        },
-        {
-          type: 'fixed',
-          value: 100,
-        },
-        {
-          type: 'ratio',
-          value: 3,
-        },
+        { type: 'fixed', value: 200 },
+        { type: 'ratio', value: 2 },
+        { type: 'fixed', value: 100 },
+        { type: 'ratio', value: 3 },
       ]}
       gap={10}
     >
