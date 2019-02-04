@@ -13,11 +13,21 @@ type ColumnsProps = {
   columns?: Column[]
 }
 
+const createSizeFromColumn = ({ type, value }: Column): string => {
+  if (type === 'ratio') {
+    return `${value}fr`
+  }
+  if (type === 'fixed') {
+    return `${value}px`
+  }
+  return '0'
+}
+
 const createStyles = (gap: number, columns: Column[]) => ({
   display: 'grid',
   gridColumnGap: `${gap}px`,
   gridTemplateColumns: columns
-    .map(({ value }) => `minmax(0, ${value}fr)`)
+    .map(column => `minmax(0, ${createSizeFromColumn(column)})`)
     .join(' '),
   width: '100%',
 })
@@ -32,14 +42,24 @@ const Columns: React.SFC<ColumnsProps> = ({
     (acc, { type, value }) => (type === 'ratio' ? acc + value : acc),
     0,
   )
+  const totalFixed = columns.reduce(
+    (acc, { type, value }) => (type === 'fixed' ? acc + value : acc),
+    0,
+  )
   const totalGap = gap * (columns.length - 1)
 
   return (
     <CSSConsumer>
       {({ css }) => {
         const wrappedChildren = React.Children.map(children, (child, index) => {
-          const { value } = columns[index]
-          const mq = (width: number) => width * (totalRatio / value) + totalGap
+          const { type, value } = columns[index]
+          const mq = (width: number) => {
+            if (type === 'ratio') {
+              return width * (totalRatio / value) + totalGap + totalFixed
+            }
+
+            return value < width ? Infinity : 0
+          }
 
           return (
             <MQProvider key={index} mq={mq}>
