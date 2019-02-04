@@ -25,7 +25,7 @@ const Columns: React.SFC<ColumnsProps> = ({
   ratios = [],
   children,
 }) => {
-  const total = ratios.reduce((acc, ratio) => acc + ratio)
+  const totalRatio = ratios.reduce((acc, ratio) => acc + ratio)
   const totalGap = gap * (ratios.length - 1)
 
   return (
@@ -33,7 +33,7 @@ const Columns: React.SFC<ColumnsProps> = ({
       {({ css }) => {
         const wrappedChildren = React.Children.map(children, (child, index) => {
           const ratio = ratios[index]
-          const mq = (width: number) => width * (total / ratio) + totalGap
+          const mq = (width: number) => width * (totalRatio / ratio) + totalGap
 
           return (
             <MQProvider key={index} mq={mq}>
