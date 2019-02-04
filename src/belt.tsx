@@ -31,7 +31,7 @@ const createStyles = (notches: Notch[]) => {
   }, {})
 }
 
-const Belt: React.SFC<BeltProps> = ({ notches, props, children }) => {
+const Belt: React.SFC<BeltProps> = ({ notches, props = {}, children }) => {
   const mq = (width: number) => notchesMQ(notches, width)
 
   return (
