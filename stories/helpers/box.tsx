@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { SFC, useContext } from 'react'
-import { CSSContext, useMediaQuery, useCSS } from '../../src'
+import { SFC } from 'react'
+import { useCSS, useMediaQuery } from '../../src'
 import useCurrentWidth from './use-current-width'
 
 type BoxProps = {
