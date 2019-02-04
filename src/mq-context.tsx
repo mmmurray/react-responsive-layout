@@ -31,5 +31,4 @@ const useMediaQuery = (width: number) => {
   return createMq([{ min: mq(width), max: Infinity }])
 }
 
-export default MQContext
-export { MQConsumer, MQProvider, useMediaQuery }
+export { MQContext, MQConsumer, MQProvider, useMediaQuery }

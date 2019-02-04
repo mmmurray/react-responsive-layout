@@ -12,5 +12,4 @@ const CSSProvider = CSSContext.Provider
 
 const useCSS = () => React.useContext(CSSContext).css
 
-export default CSSContext
-export { CSSConsumer, CSSProvider, useCSS }
+export { CSSContext, CSSConsumer, CSSProvider, useCSS }
