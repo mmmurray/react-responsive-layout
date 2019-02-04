@@ -2,9 +2,15 @@ import * as React from 'react'
 import { CSSConsumer } from './css-context'
 import { MQProvider } from './mq-context'
 
+type Column = {
+  type: 'ratio' | 'fixed'
+  value: number
+}
+
 type ColumnsProps = {
   gap?: number
   ratios: number[]
+  columns?: Column[]
 }
 
 const createStyles = (gap: number, ratios: number[]) => ({
