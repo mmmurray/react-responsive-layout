@@ -39,8 +39,34 @@ storiesOf('Columns', module)
       <Box maxWidth={200} />
     </Columns>
   ))
+  .add('three unequal columns wrapped', () => (
+    <Columns ratios={[1, 2, 3]}>
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+    </Columns>
+  ))
   .add('three unequal columns with gap', () => (
     <Columns ratios={[1, 2, 3]} gap={10}>
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+    </Columns>
+  ))
+  .add('three unequal columns with gap wrapped', () => (
+    <Columns ratios={[1, 2, 3]} columnGap={20} rowGap={10}>
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
       <Box maxWidth={200} />
       <Box maxWidth={200} />
       <Box maxWidth={200} />
@@ -52,6 +78,31 @@ storiesOf('Columns', module)
         <Box maxWidth={200} />
         <Box maxWidth={200} />
       </Columns>
+      <Box maxWidth={200} />
+    </Columns>
+  ))
+  .add('one fixed column', () => (
+    <Columns
+      columns={[{ type: 'fixed', value: 200 }, { type: 'ratio', value: 1 }]}
+      gap={10}
+    >
+      <Box maxWidth={300} />
+      <Box maxWidth={300} />
+    </Columns>
+  ))
+  .add('two fixed columns', () => (
+    <Columns
+      columns={[
+        { type: 'fixed', value: 200 },
+        { type: 'ratio', value: 2 },
+        { type: 'fixed', value: 100 },
+        { type: 'ratio', value: 3 },
+      ]}
+      gap={10}
+    >
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
+      <Box maxWidth={200} />
       <Box maxWidth={200} />
     </Columns>
   ))

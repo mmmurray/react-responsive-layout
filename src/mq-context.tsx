@@ -1,4 +1,5 @@
 import * as React from 'react'
+import createMq from './helpers/mq'
 
 type MQFunction = (width: number) => number
 
@@ -24,5 +25,10 @@ const MQProvider: React.SFC<MQProviderProps> = ({ mq, children }) => (
   </MQConsumer>
 )
 
-export default MQContext
-export { MQConsumer, MQProvider }
+const useMediaQuery = (width: number) => {
+  const { mq } = React.useContext(MQContext)
+
+  return createMq([{ min: mq(width), max: Infinity }])
+}
+
+export { MQContext, MQConsumer, MQProvider, useMediaQuery }
