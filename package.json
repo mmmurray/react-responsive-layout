@@ -33,6 +33,6 @@
     "react-dom": "16.8.0-alpha.1",
     "react-emotion": "9.2.12",
     "ts-loader": "5.3.3",
-    "typescript": "3.3.1"
+    "typescript": "3.5.1"
   }
 }
