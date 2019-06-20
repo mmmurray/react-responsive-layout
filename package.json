@@ -23,7 +23,7 @@
     "@storybook/addon-options": "4.1.11",
     "@storybook/components": "4.1.11",
     "@storybook/react": "4.1.11",
-    "@types/react": "16.8.1",
+    "@types/react": "16.8.21",
     "@types/storybook__addon-knobs": "4.0.0",
     "@types/storybook__react": "4.0.1",
     "babel-loader": "8.0.6",
