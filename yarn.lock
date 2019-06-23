@@ -1984,15 +1984,6 @@
     react-lifecycles-compat "^3.0.4"
     react-select "^2.2.0"
 
-"@storybook/addon-options@^5.1.9":
-  version "5.1.9"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-5.1.9.tgz#dc326b94c52a7ee27bf948fb7ca63a6ea3c9736d"
-  integrity sha512-wQIUw5Uc/5iREtI9eh2wPMlNG0O7jxaTaxGS8Bs6zDzkwiLHcLJCrfk1lPXU6O8ExEzWHpaCmxth8GyfKj8Qtw==
-  dependencies:
-    "@storybook/addons" "5.1.9"
-    core-js "^3.0.1"
-    util-deprecate "^1.0.2"
-
 "@storybook/addons@5.1.9":
   version "5.1.9"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-5.1.9.tgz#ecf218d08508b97ca5e6e0f1ed361081385bd3ff"
@@ -2071,7 +2062,7 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/components@5.1.9", "@storybook/components@^5.1.9":
+"@storybook/components@5.1.9":
   version "5.1.9"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.1.9.tgz#2a5258780fff07172d103287759946dbb4b13e2d"
   integrity sha512-F4xcRlifSAfqkuFWtCKRvQDahXyfWBWV2Wa+kYy4YGwEfm3kKtIHVlgdgARL22g9BdYpRFEOJ+42juOu5YvIeQ==
@@ -2222,7 +2213,7 @@
     memoizerific "^1.11.3"
     qs "^6.6.0"
 
-"@storybook/theming@5.1.9":
+"@storybook/theming@5.1.9", "@storybook/theming@^5.1.9":
   version "5.1.9"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-5.1.9.tgz#c425f5867fae0db79e01112853b1808332a5f1a2"
   integrity sha512-4jIFJwTWVf9tsv27noLoFHlKC2Jl9DHV3q+rxGPU8bTNbufCu4oby82SboO5GAKuS3eu1cxL1YY9pYad9WxfHg==

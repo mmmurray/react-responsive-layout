@@ -1,7 +1,6 @@
 import { withKnobs } from '@storybook/addon-knobs'
-import { withOptions } from '@storybook/addon-options'
-import { themes } from '@storybook/components'
-import { addDecorator, configure } from '@storybook/react'
+import { addDecorator, addParameters, configure } from '@storybook/react'
+import { themes } from '@storybook/theming'
 import { injectGlobal } from 'emotion'
 import React from 'react'
 import { css } from 'react-emotion'
@@ -26,13 +25,15 @@ injectGlobal({
   },
 })
 
-addDecorator(
-  withOptions({
-    name: 'react responsive layout',
-    url: 'https://github.com/mmmurray/react-responsive-layout',
-    theme: themes.dark,
-  }),
-)
+addParameters({
+  options: {
+    theme: {
+      ...themes.dark,
+      brandTitle: 'react-responsive-layout',
+      brandUrl: 'https://github.com/mmmurray/react-responsive-layout',
+    },
+  },
+})
 
 addDecorator(story => <CSSProvider value={{ css }}>{story()}</CSSProvider>)
 
