@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { SFC } from 'react'
-import { useCSS, useMediaQuery } from '../../src'
+import { useCSS, useMediaQuery } from '../..'
 import useCurrentWidth from './use-current-width'
 
 type BoxProps = {

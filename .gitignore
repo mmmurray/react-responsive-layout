@@ -1,5 +1,6 @@
-.cache
-*.log
+.DS_Store
 coverage
 lib
 node_modules
+tsconfig.json
+yarn-error.log

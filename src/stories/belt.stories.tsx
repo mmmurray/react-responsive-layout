@@ -1,7 +1,7 @@
 import { number } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
-import { Belt, Columns } from '../src'
+import { Belt, Columns } from '..'
 import Box from './helpers/box'
 
 storiesOf('Belt', module)

@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
-import { Columns } from '../src'
+import { Columns } from '..'
 import Box from './helpers/box'
 
 storiesOf('Columns', module)

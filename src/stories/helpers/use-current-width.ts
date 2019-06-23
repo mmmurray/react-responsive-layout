@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 const useCurrentWidth = <ElementType extends HTMLElement>() => {
-  const ref = useRef({ clientWidth: 0 } as ElementType)
+  const ref = useRef<ElementType>({ clientWidth: 0 } as any)
   const [width, setWidth] = useState(0)
 
   useEffect(() => {
