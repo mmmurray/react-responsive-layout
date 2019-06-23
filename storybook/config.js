@@ -8,7 +8,11 @@ import { css } from 'react-emotion'
 import { CSSProvider } from '../src/css-context'
 
 const loadStories = () => {
-  const requireContext = require.context('../stories', true, /\.stories\.tsx$/)
+  const requireContext = require.context(
+    '../src/stories',
+    true,
+    /\.stories\.tsx$/,
+  )
 
   requireContext.keys().map(requireContext)
 }
