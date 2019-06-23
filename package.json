@@ -28,11 +28,11 @@
     "@types/storybook__addon-knobs": "^5.0.1",
     "@types/storybook__react": "^4.0.2",
     "babel-loader": "^8.0.6",
-    "emotion": "^10.0.9",
+    "emotion": "^9.2.12",
     "mmm-scripts": "^0.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-emotion": "^10.0.0",
+    "react-emotion": "^9.2.12",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.2"
   },
