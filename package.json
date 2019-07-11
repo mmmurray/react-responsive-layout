@@ -34,7 +34,7 @@
     "react-dom": "^16.8.6",
     "react-emotion": "^9.2.12",
     "ts-loader": "^6.0.4",
-    "typescript": "^3.5.2"
+    "typescript": "^3.5.3"
   },
   "commitlint": {
     "extends": [
