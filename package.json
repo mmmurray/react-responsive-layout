@@ -29,7 +29,7 @@
     "@types/storybook__react": "^4.0.2",
     "babel-loader": "^8.0.6",
     "emotion": "^9.2.12",
-    "mmm-scripts": "^0.4.2",
+    "mmm-scripts": "^0.6.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-emotion": "^9.2.12",
