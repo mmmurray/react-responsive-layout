@@ -22,7 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@storybook/addon-knobs": "^5.1.9",
-    "@storybook/react": "^5.1.9",
+    "@storybook/react": "^5.1.10",
     "@storybook/theming": "^5.1.9",
     "@types/react": "^16.8.23",
     "@types/storybook__addon-knobs": "^5.0.2",
