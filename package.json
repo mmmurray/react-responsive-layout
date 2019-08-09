@@ -31,7 +31,7 @@
     "emotion": "^9.2.12",
     "mmm-scripts": "^0.6.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.9.0",
     "react-emotion": "^9.2.12",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.2"
