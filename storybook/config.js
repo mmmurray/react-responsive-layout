@@ -1,9 +1,8 @@
 import { withKnobs } from '@storybook/addon-knobs'
 import { addDecorator, addParameters, configure } from '@storybook/react'
 import { themes } from '@storybook/theming'
-import { injectGlobal } from 'emotion'
+import { css, injectGlobal } from 'emotion'
 import React from 'react'
-import { css } from 'react-emotion'
 import { CSSProvider } from '../src/css-context'
 
 const loadStories = () => {

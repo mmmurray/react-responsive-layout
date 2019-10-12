@@ -13,6 +13,7 @@
     "release": "mmm release",
     "storybook": "start-storybook -p 9001 -c storybook",
     "test": "mmm test",
+    "test:compile": "mmm test:compile",
     "test:coverage": "mmm test:coverage",
     "test:lint": "mmm test:lint"
   },
@@ -20,21 +21,19 @@
     "react": ">=16.8.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.4",
-    "@storybook/addon-knobs": "^5.1.9",
-    "@storybook/react": "^5.1.9",
-    "@storybook/theming": "^5.1.9",
-    "@types/react": "^16.8.23",
-    "@types/storybook__addon-knobs": "^5.0.2",
+    "@babel/core": "^7.6.4",
+    "@storybook/addon-knobs": "^5.2.3",
+    "@storybook/react": "^5.2.3",
+    "@storybook/theming": "^5.2.3",
+    "@types/react": "^16.9.5",
     "@types/storybook__react": "^4.0.2",
     "babel-loader": "^8.0.6",
-    "emotion": "^9.2.12",
-    "mmm-scripts": "^0.6.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-emotion": "^9.2.12",
-    "ts-loader": "^6.0.4",
-    "typescript": "^3.5.2"
+    "emotion": "^10.0.17",
+    "mmm-scripts": "^0.6.4",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.4"
   },
   "commitlint": {
     "extends": [
